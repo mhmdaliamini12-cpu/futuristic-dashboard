@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+/* Vazirmatn Font for Persian */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* CSS Custom Properties for Theme System */
+:root {
+  /* Default Theme Variables */
+  --bg-primary: 255, 255, 255;
+  --bg-secondary: 249, 250, 251;
+  --text-primary: 17, 24, 39;
+  --text-secondary: 107, 114, 128;
+  --accent: 59, 130, 246;
+  --accent-glow: 59, 130, 246;
+  --border-color: 229, 231, 235;
+  --card-bg: 255, 255, 255;
+  --glass-bg: 255, 255, 255;
+  --glass-border: 229, 231, 235;
+  --neon-glow: 59, 130, 246;
+  --success: 34, 197, 94;
+  --warning: 234, 179, 8;
+  --error: 239, 68, 68;
+}
+/* Theme Definitions */
+[data-theme="cyberpunk"] {
+  --bg-primary: 15, 15, 35;
+  --bg-secondary: 20, 20, 45;
+  --text-primary: 0, 255, 255;
+  --text-secondary: 150, 150, 255;
+  --accent: 0, 255, 255;
+  --accent-glow: 255, 0, 255;
+  --border-color: 0, 255, 255;
+  --card-bg: 10, 10, 30;
+  --neon-glow: 0, 255, 255;
+}
+[data-theme="hacker-green"] {
+  --bg-primary: 0, 0, 0;
+  --bg-secondary: 10, 20, 10;
+  --text-primary: 0, 255, 0;
+  --text-secondary: 0, 200, 0;
+  --accent: 0, 255, 0;
+  --accent-glow: 0, 255, 0;
+  --border-color: 0, 255, 0;
+  --card-bg: 5, 10, 5;
+  --neon-glow: 0, 255, 0;
+}
+[data-theme="amoled"] {
+  --bg-primary: 0, 0, 0;
+  --bg-secondary: 10, 10, 10;
+  --text-primary: 255, 255, 255;
+  --text-secondary: 150, 150, 150;
+  --accent: 100, 100, 255;
+  --accent-glow: 100, 100, 255;
+  --border-color: 30, 30, 30;
+  --card-bg: 5, 5, 5;
+  --neon-glow: 100, 100, 255;
+}
+[data-theme="glassmorphism"] {
+  --bg-primary: 30, 30, 50;
+  --bg-secondary: 40, 40, 60;
+  --text-primary: 255, 255, 255;
+  --text-secondary: 200, 200, 255;
+  --accent: 100, 200, 255;
+  --accent-glow: 100, 200, 255;
+  --border-color: 255, 255, 255;
+  --card-bg: 255, 255, 255;
+  --glass-bg: 255, 255, 255;
+  --glass-border: 255, 255, 255;
+  --neon-glow: 100, 200, 255;
+}
+[data-theme="purple-future"] {
+  --bg-primary: 20, 10, 40;
+  --bg-secondary: 30, 20, 50;
+  --text-primary: 200, 150, 255;
+  --text-secondary: 150, 100, 200;
+  --accent: 150, 50, 255;
+  --accent-glow: 200, 100, 255;
+  --border-color: 150, 50, 255;
+  --card-bg: 25, 15, 45;
+  --neon-glow: 150, 50, 255;
+}
+[data-theme="light-minimal"] {
+  --bg-primary: 255, 255, 255;
+  --bg-secondary: 245, 245, 245;
+  --text-primary: 0, 0, 0;
+  --text-secondary: 100, 100, 100;
+  --accent: 0, 0, 0;
+  --accent-glow: 100, 100, 100;
+  --border-color: 200, 200, 200;
+  --card-bg: 255, 255, 255;
+  --neon-glow: 0, 0, 0;
+}
+[data-theme="matrix"] {
+  --bg-primary: 0, 0, 0;
+  --bg-secondary: 5, 15, 5;
+  --text-primary: 0, 255, 0;
+  --text-secondary: 0, 150, 0;
+  --accent: 0, 255, 0;
+  --accent-glow: 0, 255, 0;
+  --border-color: 0, 255, 0;
+  --card-bg: 10, 20, 10;
+  --neon-glow: 0, 255, 0;
+}
+/* Global Styles */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+body {
+  background-color: rgb(var(--bg-primary));
+  color: rgb(var(--text-primary));
+  transition: all 0.3s ease;
+}
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(var(--glass-bg), 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--glass-border), 0.2);
+}
+/* Neon Border Animation */
+.neon-border {
+  border: 1px solid rgb(var(--neon-glow));
+  animation: neon-pulse 2s infinite;
+}
+/* Matrix Rain Canvas */
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
